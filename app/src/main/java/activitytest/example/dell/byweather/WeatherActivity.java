@@ -1,5 +1,6 @@
 package activitytest.example.dell.byweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -24,6 +25,7 @@ import java.io.IOException;
 
 import activitytest.example.dell.byweather.gson.Forecast;
 import activitytest.example.dell.byweather.gson.Weather;
+import activitytest.example.dell.byweather.service.AutoUpdateService;
 import activitytest.example.dell.byweather.util.HttpUtil;
 import activitytest.example.dell.byweather.util.Utility;
 import okhttp3.Call;
@@ -208,6 +210,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
     private void loadingBingPic(){
